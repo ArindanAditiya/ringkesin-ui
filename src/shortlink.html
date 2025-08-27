@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/output.css" rel="stylesheet" />
+    <!-- Remix Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
+  >
+    <!-- div pembungkus utama -->
+    <div
+      class="w-full max-w-md bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-6 space-y-6"
+    >
+      <!-- title -->
+      <h1 class="text-2xl font-bold text-center text-blue-600">MY Link</h1>
+      <!-- input link -->
+      <div class="flex items-center space-x-2">
+        <input
+          type="text"
+          placeholder="Input Your Link"
+          class="flex-1 px-4 py-2 rounded-xl border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          class="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-md cursor-pointer"
+        >
+          <i class="ri-send-plane-fill"></i>
+        </button>
+      </div>
+
+      <!-- output link -->
+      <div class="flex items-center space-x-2">
+        <input
+          type="text"
+          readonly
+          value="https://yourshortlink.mylink"
+          class="flex-1 px-4 py-2 rounded-xl border border-green-300 bg-green-50 text-green-700 font-medium"
+        />
+        <button onclick="navigator.clipboard.writeText(document.querySelector(#shortlink).vslue)" 
+          class="p-2 bg-green-500 hover:bg-green-600 text-white rounded-xl shadow-md cursor-pointer"
+        >
+          <i class="ri-file-copy-line"></i>
+        </button>
+      </div>
+    </div>
+
+    
+
+    <!-- java script -->
+    <script>
+      // fungsi tombol salin short link
+      const copyBtn = document.querySelector("button[onclick]");
+      const shortInput = document.querySelector("input[readonly]");
+
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(shortInput.value);
+        copyBtn.innerHTML = '<i class="ri-check-line"></i>';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="ri-file-copy-line"></i>';
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>
